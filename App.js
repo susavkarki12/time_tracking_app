@@ -1,20 +1,80 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+import React from 'react';
+import { StyleSheet, StatusBar } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Homepge from './app/components/firstPage';
+import SecondPage from './app/components/secondPage';
+import ThirdPage from './app/components/thirdPage';
+import FourthPage from './app/components/fourthPage';
+import FifthPage from './app/components/fifthPage';
+import DashBoard from './app/components/dashboard';
+import Permissions from './app/components/appPermission';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+const Stack = createNativeStackNavigator();
+
+class App extends React.Component {
+  componentDidMount() {
+    StatusBar.setHidden(false);
+  }
+  render() {
+    return (
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name='home'
+            component={Homepge}
+            options={{
+              headerShown: false,
+              statusBarHidden: true,
+            }}
+          />
+          <Stack.Screen
+            name='secondPage'
+            component={SecondPage}
+            options={{
+              headerShown: false,
+              statusBarHidden: true,
+            }} />
+          <Stack.Screen 
+            name='thirdPage'
+            component={ThirdPage}
+            options={{
+              headerShown: false,
+              statusBarHidden: true,
+            }} />
+            <Stack.Screen 
+            name='fourthPage'
+            component={FourthPage}
+            options={{
+              headerShown: false,
+              statusBarHidden: true,
+            }} />
+            <Stack.Screen 
+            name='fifthPage'
+            component={FifthPage}
+            options={{
+              headerShown: false,
+              statusBarHidden: true,
+            }} />
+            <Stack.Screen 
+            name='dashBoard'
+            component={DashBoard}
+            options={{
+              headerShown: false,
+              statusBarHidden: true,
+            }} />
+            <Stack.Screen 
+            name='permissions'
+            component={Permissions}
+            options={{
+              headerShown: false,
+              statusBarHidden: true,
+            }} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
+  }
+
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App
