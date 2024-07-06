@@ -6,15 +6,15 @@ import {
   Dimensions,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
-import { LinearGradient } from "expo-linear-gradient";
-import { useNavigation } from "@react-navigation/native";
-
-const height = Dimensions.get("screen").height;
-const width = Dimensions.get("screen").width;
+import React, { useState } from "react";
 
 const OnBoardingRenderItem = ({ item }) => {
-  const navigation = useNavigation();
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const handleOptionSelect = (option) => {
+    setSelectedOption(option);
+    console.log(`Selected option: ${option}`);
+  };
 
   switch (item.type) {
     case "static":
@@ -35,8 +35,25 @@ const OnBoardingRenderItem = ({ item }) => {
 
     case "dynamic":
       return (
-        <View style={styles.staticContainer}>
-          <Text>Dynamix</Text>
+        <View style={styles.dynamicContainer}>
+          <Text style={styles.appName}>APP_NAME</Text>
+          <View style={styles.questionBox}>
+            <Text style={styles.question}>{item.question}</Text>
+            <View style={styles.optionsContainer}>
+              {item.options.map((option, index) => (
+                <TouchableOpacity
+                  key={index}
+                  style={[
+                    styles.option,
+                    selectedOption === option && styles.selectedOption,
+                  ]}
+                  onPress={() => handleOptionSelect(option)}
+                >
+                  <Text style={styles.optionText}>{option}</Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+          </View>
         </View>
       );
   }
@@ -86,5 +103,53 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     textAlign: "center",
     fontFamily: "TTHoves",
+  },
+  dynamicContainer: {
+    flex: 1,
+    width: Dimensions.get("screen").width,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  appName: {
+    fontSize: 35,
+    color: "white",
+    padding: 30,
+    fontWeight: "bold",
+    marginTop: 50,
+    marginBottom: 20,
+  },
+  questionBox: {
+    flex: 1,
+    justifyContent: "center",
+    backgroundColor: "#ffffff",
+    width: "100%",
+    marginVertical: 20,
+    padding: 10,
+    borderRadius: 20,
+  },
+  question: {
+    fontSize: 35,
+    fontWeight: "bold",
+    marginBottom: 30,
+    textAlign: "center",
+  },
+  optionsContainer: {
+    width: "100%",
+  },
+  option: {
+    fontSize: 20,
+    padding: 15,
+    borderWidth: 2,
+    borderColor: "#ddd",
+    borderRadius: 60,
+    marginVertical: 10,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  selectedOption: {
+    backgroundColor: "#cce7ff",
+  },
+  optionText: {
+    fontSize: 18,
   },
 });
