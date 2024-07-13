@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   FlatList,
   Dimensions,
+  PermissionsAndroid,
 } from "react-native";
 import React, { useState, useRef } from "react";
 import { useNavigation } from "@react-navigation/native";
@@ -15,6 +16,30 @@ import Pagination from "../components/Pagination";
 import { LinearGradient } from "expo-linear-gradient";
 
 const { height, width } = Dimensions.get("screen");
+
+const requestNotificationPermission = async () => {
+  try {
+    const granted = await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS,
+      {
+        title: 'Notification access is required',
+        message:
+          'App name needs to access notification' +
+          'so we can remind you of the time.',
+        buttonNeutral: 'Ask Me Later',
+        buttonNegative: 'Cancel',
+        buttonPositive: 'OK',
+      },
+    );
+    if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+      console.log('Notification granted');
+    } else {
+      console.log('Notification not granted');
+    }
+  } catch (err) {
+    console.warn(err);
+  }
+};
 
 const OnBoardingScreen = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -37,7 +62,8 @@ const OnBoardingScreen = () => {
       });
     } else {
       // If on the last page, navigate to the dashboard
-      navigation.replace("DashBoard");
+      requestNotificationPermission()
+      navigation.navigate("DashBoard")
     }
   };
 

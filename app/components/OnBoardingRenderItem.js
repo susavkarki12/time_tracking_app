@@ -20,9 +20,9 @@ const OnBoardingRenderItem = ({ item }) => {
     case "static":
       return (
         <View style={styles.staticContainer}>
-          <View style={styles.imageView}>
+          
             <Image source={item.image} style={styles.image} />
-          </View>
+          
           <View style={styles.textBox}>
             <Text style={styles.title1}>{item.title1}</Text>
             {item.title2 ? (
@@ -69,14 +69,10 @@ const styles = StyleSheet.create({
     padding: 15,
     width: Dimensions.get("screen").width,
   },
-  imageView: {
-    width: 320,
-    height: 450,
-    marginBottom: 40,
-  },
+  
   image: {
-    width: "100%",
-    height: "100%",
+    width: "90%",
+    height: "70%",
   },
   textBox: {
     textAlign: "center",
@@ -86,7 +82,7 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: "bold",
     textAlign: "center",
-    marginBottom: -5,
+    marginBottom: "-2%",
     fontFamily: "TTHoves",
   },
   title2: {
@@ -94,13 +90,13 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: "bold",
     textAlign: "center",
-    marginBottom: 5,
+    marginBottom: "1%",
     fontFamily: "TTHoves",
   },
   description: {
     color: "white",
     fontSize: 20,
-    marginVertical: 20,
+    marginVertical: "2%",
     textAlign: "center",
     fontFamily: "TTHoves",
   },
@@ -115,16 +111,18 @@ const styles = StyleSheet.create({
     color: "white",
     padding: 30,
     fontWeight: "bold",
-    marginTop: 50,
-    marginBottom: 20,
+    marginTop: "17%",
+    marginBottom: "8%",
   },
   questionBox: {
     flex: 1,
     justifyContent: "center",
     backgroundColor: "#ffffff",
     width: "100%",
-    marginVertical: 20,
+    height:"100%",
+    //marginVertical: 20,
     padding: 10,
+    marginBottom:"-2%",
     borderRadius: 20,
   },
   question: {
