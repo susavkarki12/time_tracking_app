@@ -194,11 +194,13 @@ const DashBoard = ({ navigation }) => {
           marginLeft: "5%",
           marginRight: "8%"
         }} />
+        <TouchableOpacity onPress={navigation.navigate("Setting")}>
         <Image
           style={styles.footerLogo}
           
           source={require("./icons/2.png")}
         />
+        </TouchableOpacity>
         <Image
           style={styles.footerLogo}
           source={require("./icons/3.png")}

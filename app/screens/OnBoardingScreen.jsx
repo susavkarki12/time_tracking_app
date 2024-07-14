@@ -121,9 +121,9 @@ const styles = StyleSheet.create({
     backgroundColor: "ff3131",
     width: "85%",
     alignSelf: "center",
-    marginBottom: 20,
+    marginBottom: "8%",
     alignItems: "center",
-    paddingVertical: 20,
+    paddingVertical: "5%",
     borderRadius: 30,
   },
   nextButtonText: {
