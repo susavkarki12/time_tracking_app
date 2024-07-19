@@ -4,6 +4,8 @@ import { LinearGradient } from "expo-linear-gradient";
 const { height, width } = Dimensions.get("screen")
 import { BarChart } from "react-native-chart-kit";
 import { useNavigation, Link } from "@react-navigation/native";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+const rgba = (r, g, b, a) => `rgba(${r}, ${g}, ${b}, ${a})`;
 
 
 
@@ -17,9 +19,15 @@ const data = {
 };
 
 
+
 const DashBoard = ({ navigation }) => {
   //const navigation = useNavigation();
-
+  const nav=()=>{
+    navigation.navigate("Setting")
+  }
+  const navtovip=()=>{
+    navigation.navigate("vip")
+  }
 
 
   return (
@@ -64,7 +72,7 @@ const DashBoard = ({ navigation }) => {
 
 
       
-        <View>
+        <View >
           <LinearGradient
             colors={["#ff3131", "#ff914d"]}
             start={{ x: 0, y: 1 }}
@@ -80,6 +88,7 @@ const DashBoard = ({ navigation }) => {
               flexDirection: "row"
             }}
           >
+            <TouchableOpacity onPress={navtovip}>
             <Text style={{
               fontFamily: "TTHoves",
               paddingLeft: "5%",
@@ -95,6 +104,7 @@ const DashBoard = ({ navigation }) => {
                 Unlimited Apps & more Features!
               </Text>
             </Text>
+            </TouchableOpacity>
             <Image
               style={{
                 width: "22%",
@@ -122,7 +132,7 @@ const DashBoard = ({ navigation }) => {
           marginTop: "-350%",
           fontSize: 18,
           color: "black"
-        }}>See more >> </Text></Pressable>
+        }}>See more  </Text></Pressable>
       </View>
 
       
@@ -146,7 +156,7 @@ const DashBoard = ({ navigation }) => {
             backgroundGradientFromOpacity: 1,
             //backgroundGradientTo: "white",
             backgroundGradientToOpacity: 0.8,
-            color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+            color: (opacity = 1) => rgba(26, 255, 146, opacity),
             strokeWidth: 2, // optional, default 3
             barPercentage: 0.5,
             useShadowColorFromDataset: false // optional
@@ -194,13 +204,17 @@ const DashBoard = ({ navigation }) => {
           marginLeft: "5%",
           marginRight: "8%"
         }} />
+        <TouchableOpacity onPress={nav}>
         <Image
-          style={styles.footerLogo}
+          style={[styles.footerLogo, {
+            width: wp('12%')
+          }]}
           
           source={require("./icons/2.png")}
         />
+        </TouchableOpacity >
         <Image
-          style={styles.footerLogo}
+          style={[styles.footerLogo]}
           source={require("./icons/3.png")}
         />
         <Image

@@ -5,6 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import AppNavigation from "./app/navigation/AppNavigation";
 import AppLoading from "expo-app-loading";
 import { useFonts } from "expo-font";
+import { ThemeProvider } from "./app/Context/ThemeContext";
 
 const FontContext = createContext();
 
@@ -17,11 +18,14 @@ const App = () => {
     return <AppLoading />;
   }
   return (
-    <FontContext.Provider value="TTHoves">
-      <NavigationContainer>
-        <AppNavigation />
-      </NavigationContainer>
-    </FontContext.Provider>
+    
+    <ThemeProvider>
+      <FontContext.Provider value="TTHoves">
+        < NavigationContainer>
+          <AppNavigation />
+        </NavigationContainer>
+      </FontContext.Provider>
+    </ThemeProvider>
   );
 };
 

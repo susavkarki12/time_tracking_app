@@ -1,4 +1,4 @@
-rootProject.name = 'mobileApp'
+rootProject.name = 'Time_Tracking_App'
 
 dependencyResolutionManagement {
   versionCatalogs {

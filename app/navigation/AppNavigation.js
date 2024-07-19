@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Dashboard, OnBoardingScreen } from "../screens";
+import { Setting } from "../screens/Setting";
 
 import VipComponent from "../screens/VIP";
 
@@ -19,6 +20,7 @@ const AppNavigation = () => {
       <AppStack.Screen name="DashBoard" component={Dashboard} />
       
       <AppStack.Screen name="vip" component={VipComponent} />
+      <AppStack.Screen name="Setting" component={Setting} />
     </AppStack.Navigator>
   );
 };
