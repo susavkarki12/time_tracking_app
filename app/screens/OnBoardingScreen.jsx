@@ -7,13 +7,14 @@ import {
   Dimensions,
   PermissionsAndroid,
 } from "react-native";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,useContext } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import OnBoardingData from "../constants/OnBoardingData";
 import OnBoardingRenderItem from "../components/OnBoardingRenderItem";
 import Pagination from "../components/Pagination";
 import { LinearGradient } from "expo-linear-gradient";
+import { ThemeContext } from "../Context/ThemeContext";
 
 const { height, width } = Dimensions.get("screen");
 
@@ -42,6 +43,7 @@ const requestNotificationPermission = async () => {
 };
 
 const OnBoardingScreen = () => {
+  const {isDarkMode} =useContext(ThemeContext);
   const [currentIndex, setCurrentIndex] = useState(0);
   const navigation = useNavigation();
 
@@ -74,7 +76,7 @@ const OnBoardingScreen = () => {
       end={{ x: 1, y: 0 }}
       style={{ flex: 1 }}
     >
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style={{...styles.container,backgroundColor:isDarkMode? "#001F3F" : "white"}}>
         <View style={{ flex: 0.95 }}>
           <FlatList
             ref={flatListRef}

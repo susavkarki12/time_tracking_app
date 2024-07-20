@@ -1,21 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState,useContext } from 'react'
 import { Text, View, Image, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { FontAwesome } from "@expo/vector-icons";
 import CheckBox from 'expo-checkbox'
 import { LinearGradient } from "expo-linear-gradient";
+import { ThemeContext } from '../Context/ThemeContext';
 
 
 
 const VipComponent = () => {
   const [isSelected, setSelection] = useState(false);
+  const {isDarkMode} = useContext(ThemeContext);
 
   return (
-    <SafeAreaView style={{height:hp('100%')}}>
-      <Text style={[styles.mainText, { marginTop: hp('7%') }]}>VIP PREMIUM</Text>
+    <SafeAreaView style={{height:hp('100%'),backgroundColor:isDarkMode? "#001F3F" : "white"}}>
+      <Text style={{...styles.mainText, marginTop: hp('7%'),color:isDarkMode?"white":"black"}}>VIP PREMIUM</Text>
 
-      <Text style={styles.mainText}>Upgrade to <Text style={{ color: "#ff3131" }}>VIP</Text> Member!</Text>
-      <Text style={styles.secondText}>Unlock premium features to personalize your
+      <Text style={{...styles.mainText,color:isDarkMode?"white":"black"}}>Upgrade to <Text style={{ color: "#ff3131" }}>VIP</Text> Member!</Text>
+      <Text style={{...styles.secondText,color:isDarkMode?"white":"black"}}>Unlock premium features to personalize your
         schedule, prioritize tasks, and maximize your
         focus.</Text>
       <Image
@@ -24,15 +26,15 @@ const VipComponent = () => {
       />
       <View style={styles.tickRow}>
         <FontAwesome name="check" size={23} color="#1F7B55" />
-        <Text style={styles.rowText}>Intervention customization</Text>
+        <Text style={{...styles.rowText,color:isDarkMode?"white":"black"}}>Intervention customization</Text>
       </View>
       <View style={styles.tickRow}>
         <FontAwesome name="check" size={23} color="#1F7B55" />
-        <Text style={styles.rowText}>Unlimited Time Tracking</Text>
+        <Text style={{...styles.rowText,color:isDarkMode?"white":"black"}}>Unlimited Time Tracking</Text>
       </View>
       <View style={styles.tickRow}>
         <FontAwesome name="check" size={23} color="#1F7B55" />
-        <Text style={styles.rowText}>Unlimited Apps Can Be Locked</Text>
+        <Text style={{...styles.rowText,color:isDarkMode?"white":"black"}}>Unlimited Apps Can Be Locked</Text>
       </View>
       <View style={styles.tickRow}>
         <CheckBox

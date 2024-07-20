@@ -1,11 +1,13 @@
 import { View, Text, Image, Platform, StyleSheet, TextInput, Dimensions, KeyboardAvoidingView, Pressable, TouchableOpacity } from 'react-native'
 import React from 'react'
+import { useContext } from 'react';
 import { LinearGradient } from "expo-linear-gradient";
 const { height, width } = Dimensions.get("screen")
 import { BarChart } from "react-native-chart-kit";
 import { useNavigation, Link } from "@react-navigation/native";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 const rgba = (r, g, b, a) => `rgba(${r}, ${g}, ${b}, ${a})`;
+import { ThemeContext } from '../Context/ThemeContext';
 
 
 
@@ -22,17 +24,19 @@ const data = {
 
 const DashBoard = ({ navigation }) => {
   //const navigation = useNavigation();
+  const { isDarkMode } = useContext(ThemeContext);
   const nav=()=>{
     navigation.navigate("Setting")
   }
   const navtovip=()=>{
     navigation.navigate("vip")
   }
+  
 
 
   return (
 
-    <View style={styles.mainView}>
+    <View style={{...styles.mainView,backgroundColor:isDarkMode? "#001F3F" : "white"}}>
       <View style={styles.topView}>
         <Image
           style={styles.logo}
@@ -204,11 +208,11 @@ const DashBoard = ({ navigation }) => {
           marginLeft: "5%",
           marginRight: "8%"
         }} />
-<<<<<<< HEAD
+
         <TouchableOpacity onPress={nav}>
-=======
-        <TouchableOpacity onPress={navigation.navigate("Setting")}>
->>>>>>> b1e6b9083740e5444e9a18c1f99903841ec85fcf
+
+        
+
         <Image
           style={[styles.footerLogo, {
             width: wp('12%')
@@ -216,11 +220,11 @@ const DashBoard = ({ navigation }) => {
           
           source={require("./icons/2.png")}
         />
-<<<<<<< HEAD
-        </TouchableOpacity >
-=======
+
+        
+
         </TouchableOpacity>
->>>>>>> b1e6b9083740e5444e9a18c1f99903841ec85fcf
+ 
         <Image
           style={[styles.footerLogo]}
           source={require("./icons/3.png")}

@@ -66,7 +66,7 @@ export const Setting = ({navigation}) => {
         }}
       >
         <View>
-          <FontAwesome name="angle-left" size={23} color={isDarkMode?"white":"black"} />
+          <TouchableOpacity onPress={navtodash}><FontAwesome name="angle-left" size={23} color={isDarkMode?"white":"black"} /></TouchableOpacity>
         </View>
         <Text
           style={{
