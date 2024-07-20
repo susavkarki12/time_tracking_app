@@ -204,7 +204,11 @@ const DashBoard = ({ navigation }) => {
           marginLeft: "5%",
           marginRight: "8%"
         }} />
+<<<<<<< HEAD
         <TouchableOpacity onPress={nav}>
+=======
+        <TouchableOpacity onPress={navigation.navigate("Setting")}>
+>>>>>>> b1e6b9083740e5444e9a18c1f99903841ec85fcf
         <Image
           style={[styles.footerLogo, {
             width: wp('12%')
@@ -212,7 +216,11 @@ const DashBoard = ({ navigation }) => {
           
           source={require("./icons/2.png")}
         />
+<<<<<<< HEAD
         </TouchableOpacity >
+=======
+        </TouchableOpacity>
+>>>>>>> b1e6b9083740e5444e9a18c1f99903841ec85fcf
         <Image
           style={[styles.footerLogo]}
           source={require("./icons/3.png")}
